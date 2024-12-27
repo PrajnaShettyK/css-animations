@@ -1,1 +1,35 @@
-name:%20Compile%20Sass%0A%0Aon%3A%0A%20%20push%3A%0A%20%20%20%20branches%3A%0A%20%20%20%20%20%20-%20main%20%20%23%20Adjust%20if%20your%20default%20branch%20is%20different%0A%0Ajobs:%0A%20%20build:%0A%20%20%20%20runs-on:%20ubuntu-latest%0A%0A%20%20%20%20steps:%0A%20%20%20%20%20%20-%20name:%20Checkout%20repository%0A%20%20%20%20%20%20%20%20uses:%20actions/checkout@v2%0A%0A%20%20%20%20%20%20-%20name:%20Set%20up%20Node.js%20environment%0A%20%20%20%20%20%20%20%20uses:%20actions/setup-node@v2%0A%20%20%20%20%20%20%20%20with:%0A%20%20%20%20%20%20%20%20%20%20node-version:%20'14'%0A%0A%20%20%20%20%20%20-%20name:%20Install%20Sass%0A%20%20%20%20%20%20%20%20run:%20npm%20install%20-g%20sass%0A%0A%20%20%20%20%20%20-%20name:%20Compile%20Sass%0A%20%20%20%20%20%20%20%20run:%20sass%20style.scss%20style.css%0A%0A%20%20%20%20%20%20-%20name:%20Commit%20compiled%20CSS%0A%20%20%20%20%20%20%20%20run:%20%7C%0A%20%20%20%20%20%20%20%20%20%20git%20config%20--local%20user.email%20%22action@github.com%22%0A%20%20%20%20%20%20%20%20%20%20git%20config%20--local%20user.name%20%22GitHub%20Action%22%0A%20%20%20%20%20%20%20%20%20%20git%20add%20style.css%0A%20%20%20%20%20%20%20%20%20%20git%20commit%20-m%20%22Compile%20Sass%20to%20CSS%22%0A%20%20%20%20%20%20%20%20%20%20git%20push%0A%20%20%20%20%20%20%20%20env:%0A%20%20%20%20%20%20%20%20%20%20GITHUB_TOKEN:%20$%7B%7B%20secrets.GITHUB_TOKEN%20%7D%7D
+name: Compile Sass
+
+on:
+  push:
+    branches:
+      - main  # Adjust if your default branch is different
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Sass
+        run: npm install -g sass
+
+      - name: Compile Sass
+        run: sass style.scss style.css
+
+      - name: Commit compiled CSS
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add style.css
+          git commit -m "Compile Sass to CSS"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
