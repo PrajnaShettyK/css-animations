@@ -1,153 +1,82 @@
 # css-animations
-Explaination of the code in detail so you can understand and master it step by step:
 
-1. Structure of the HTML
-	•	DOCTYPE Declaration:
-Specifies the document type as HTML5.
+Let’s delve into the code step by step to understand and master CSS animations.
+
+### HTML Structure
+
+The HTML structure begins with the DOCTYPE declaration, specifying the document type as HTML5.
+
+```html
 <!DOCTYPE html>
-	•	HTML Tags:
-The root element that encloses the entire document.
-<html lang="en">
-	•	Head Section:
-Contains metadata and links for external resources like the CSS file:
+```
 
+Next, we have the HTML tags, which are the root element that encloses the entire document.
+
+```html
+<html lang=“en”>
+```
+
+The head section contains metadata and links for external resources, including the CSS file.
+
+```html
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset=“UTF-8”>
+  <meta name=“viewport” content=“width=device-width, initial-scale=1.0”>
   <title>Classy cards</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel=“stylesheet” href=“style.css”>
 </head>
+```
 
-	•	meta Tags: Define the character set (UTF-8) and make the page responsive by adjusting it to the user’s device width.
-	•	link Tag: Links an external CSS file (style.css) for styling.
+The meta tags define the character set (UTF-8) and make the page responsive by adjusting it to the user’s device width.
 
-	•	Body Section:
-Contains all the visible elements, such as the cards.
+The link tag links an external CSS file (style.css) for styling.
 
-2. Card Layout in HTML
+The body section contains all the visible elements, such as the cards.
 
-Each card follows this structure:
+### Card Layout in HTML
 
-<div class="card color-class">
-  <div class="card-header">...</div>
-  <div class="card-body">...</div>
-  <div class="card-footer">...</div>
+Each card follows a specific structure:
+
+```html
+<div class=“card color-class”>
+  <div class=“card-header”>…</div>
+  <div class=“card-body”>…</div>
+  <div class=“card-footer”>…</div>
 </div>
+```
 
-Breakdown:
-	•	card Class: Defines the layout and styling of the card.
-	•	card-header:
-	•	Displays a date and an SVG icon.
-	•	Example:
+Let’s break down each element:
 
-<div class="card-header">
-  <div class="date">Feb 2, 2021</div>
-  <svg>...</svg>
+- **card Class:** Defines the layout and styling of the card.
+- **card-header:** Displays a date and an SVG icon.
+
+```html
+<div class=“card-header”>
+  <div class=“date”>Feb 2, 2021</div>
+  <svg>…</svg>
 </div>
+```
 
+- **card-body:** Contains the main content, such as the title, description, and progress bar.
 
-	•	card-body:
-	•	Contains the main content, such as the title, description, and progress bar.
-	•	Example:
-
-<div class="card-body">
+```html
+<div class=“card-body”>
   <h3>web designing</h3>
   <p>Prototyping</p>
-  <div class="progress">
+  <div class=“progress”>
     <span>Progress</span>
-    <div class="progress-bar"></div>
+    <div class=“progress-bar”></div>
     <span>90%</span>
   </div>
 </div>
+```
 
+- **card-footer:** Contains avatars, a button for adding members, and a countdown.
 
-	•	card-footer:
-	•	Contains avatars, a button for adding members, and a countdown.
-	•	Example:
-
-<div class="card-footer">
+```html
+<div class=“card-footer”>
   <ul>
-    <li><img src="image_url" alt=""></li>
+    <li><img src=“image_url” alt=“”></li>
   </ul>
-  <a href="#" class="btn-countdown">2 days left</a>
+  <a href=“#” class=“btn-countdown”>2 days left</a>
 </div>
-
-3. CSS Styling (style.css)
-
-General Rules:
-	•	Reset styles:
-Removes default padding and margins for all elements:
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-	•	Body Styling:
-Makes the body a full-screen centered container with a dark background:
-
-body {
-  min-height: 100vh;
-  background: #232228;
-  font-family: "Nunito", sans-serif;
-  display: grid;
-  place-items: center;
-}
-
-
-
-Card Styling:
-	•	Card Layout:
-Adds a shadow, rounded corners, and centering for the cards:
-
-.card {
-  box-shadow: 1px 12px 25px rgba(0, 0, 0, 0.78);
-  border-radius: 2.25rem;
-  display: grid;
-  place-items: center;
-}
-
-
-	•	Card Variants:
-Adds unique colors for different cards (e.g., green, red, orange, blue):
-
-.green {
-  background: radial-gradient(...);
-}
-
-
-	•	Progress Bar:
-Represents progress visually with a filled bar:
-
-.progress-bar:after {
-  background: #01c3a8;
-  width: 90%; /* Adjust based on progress */
-}
-
-
-
-Responsive Design:
-
-The meta tag in the head and the flexible CSS units ensure the layout works well on all screen sizes.
-
-4. Key Features
-	•	Dynamic Styling:
-Each card has a unique style defined by classes like .green or .red.
-	•	Progress Indicators:
-The progress bar visually represents progress with customizable percentages.
-	•	Responsive Design:
-Cards are centered and adapt to different screen sizes.
-
-Practice Task
-	1.	Customize the Colors:
-Try changing the gradient colors in .green, .blue, etc.
-	2.	Modify the Progress:
-Adjust the width of .progress-bar:after to show different progress levels.
-	3.	Add New Cards:
-Create new cards by duplicating the existing structure and modifying the content.
-	4.	Experiment with Fonts:
-Change the font-family in the body selector to see how it affects the design.
-
-Let me know if you’d like help with any specific section!
